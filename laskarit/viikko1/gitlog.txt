@@ -1,0 +1,114 @@
+commit 5f11b0d95d517f1216ee64a0705b11f7da6b8056
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:33:50 2021 +0200
+
+    muutoksia tiedostoihin
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 1 +
+ 3 files changed, 1 insertion(+)
+
+commit 65d2432382832ad649339ac6fb33534c9d4a1859
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:31:32 2021 +0200
+
+    tiedostoja lisätty
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 409ef2ae8ff3a7c5718bddbccb1e4f64c49c28ac
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:14:24 2021 +0200
+
+    lisäys ja poisto
+
+ eka.txt    | 3 ---
+ kolmas.txt | 1 +
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+commit bd2d645763c492a413ebba0dfb808e97f04aed57
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:10:52 2021 +0200
+
+    tiedosto.txt uudelleennimetty eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit acc3d760afbcd9366d80bfa88dd1a80d4652c0c6
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:06:53 2021 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit bb2edf8580fa91e15215bad9deb34e011d3368fd
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:03:23 2021 +0200
+
+    poistettu osa tekstistä ja lisätty hieman tekstiä
+
+ tiedosto.txt | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+commit 32986153722fffcae23a3885c1d937cfb4424c33
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 13:01:57 2021 +0200
+
+    paljon tekstiä tiedosto.txt:iin
+
+ tiedosto.txt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+commit 8d47aa1d121aa9ac15112e8e2f0fac85a469a9d7
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 12:43:02 2021 +0200
+
+    stuff ja sen tiedosto lisätty
+
+ stuff/stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit dec44476adbea3ed32d938cf92a72d6d0f7b1ca0
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 12:42:10 2021 +0200
+
+    toinen ja kolmas muutos
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit ddf38526307dcdd08c1d20fbc65bb463f6bcc423
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 12:41:07 2021 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8f0f7ffa6ea406746c9eca97c27834ec6890b748
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 12:34:18 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 87ec99adbab0a99ff2954b0eba4cf2c684e6079a
+Author: Matti Kannisto <matti.kannisto@helsinki.fi>
+Date:   Sat Nov 6 12:32:35 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
