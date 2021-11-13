@@ -7,7 +7,7 @@ The software allows the user to automatically generate primer pairs for sequenci
 There will be only one group of users. If a need arises, more user groups will be added.
 
 ## Draft user interface
-
+![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/dna_sequencing_tool_python_user_interface_draft)
 
 ## Basic functionalities
 ### Before logging in to the system
