@@ -1,5 +1,6 @@
 # Ohjelmistotekniikka harjoitustyö
 [Tuntikirjanpito](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
 [Vaatimusmäärittely](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 ## Tehtävät
