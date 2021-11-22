@@ -1,15 +1,14 @@
-# Ohjelmistotekniikka harjoitustyö
+# DnaSequencingToolPython
+DnaSequencingToolPython-sovellus mahdollistaa automatisoidun sekvensointialukkeiden suunnittelun käyttäjän antamille DNA-sekvensseille. 
+
+## Dokumentaatio
 [Tuntikirjanpito](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 [Vaatimusmäärittely](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-## Tehtävät
-**Viikko 1**
+## Komentorivitoiminnot
+**Ohjelman käynnistäminen:** poetry run invoke start
 
-[komentorivi.txt](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+**Testien suorittaminen:** poetry run invoke test
 
-[gitlog.txt](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-Paikallisella koneella tehty muutos
-
-Muutos epäsynkroonia varten
+**Testikattavuusraportin generoiminen:** poetry run invoke coverage-report
