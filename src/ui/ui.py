@@ -60,7 +60,7 @@ class UserInterface():
         if name != "" and sequence != "":
             new_dna_fragment = DnaFragment(name, sequence)
             if new_dna_fragment.incorrect_letters_found():
-                self.dna_fragment_label.config(text="Invalid DNA sequence!")
+                self.dna_fragment_label.config(text="Invalid DNA sequence! The sequence should contain only letters 'A', 'T', 'G' and 'C'")
             else:
                 self.dna_fragment = new_dna_fragment
                 self.dna_fragment_label.config(text=("DNA fragment " + new_dna_fragment.get_name() + ": " + new_dna_fragment.get_sequence()))
