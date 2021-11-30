@@ -14,3 +14,5 @@ Sovelluksen käyttämistä ja testaamista varten tarvitaan vähintään [Pythoni
 **Testien suorittaminen:** poetry run invoke test
 
 **Testikattavuusraportin generoiminen:** poetry run invoke coverage-report
+
+**Koodin tyylin tarkistaminen** poetry run invoke pylint src

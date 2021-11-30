@@ -1,11 +1,13 @@
 import unittest
 from entities.ribosome import Ribosome
 
+
 class TestRibosome(unittest.TestCase):
     def setUp(self):
         self.ribosome = Ribosome()
-        self.valid_dna_sequence = "ATGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC" # Beginning of E. coli pykF gene (NCBI Ref: NC_000913.3)
-        
+        # Beginning of E. coli pykF gene (NCBI Ref: NC_000913.3)
+        self.valid_dna_sequence = "ATGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC"
+
     def test_newly_created_ribosome_has_not_encountered_a_start_codon(self):
         self.assertEqual(self.ribosome.start_codon_encountered, False)
 

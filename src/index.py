@@ -1,8 +1,11 @@
-from ui.ui import UserInterface
 import sys
+from ui.ui import UserInterface
+
 
 def main():
-    sys.setrecursionlimit(10**6) # This will be needed for recursive translation of DNA sequences to protein sequences
-    userInterface = UserInterface()
+    # This will be needed for recursive translation of DNA sequences to protein sequences
+    sys.setrecursionlimit(10**6)
+    UserInterface()
+
 
 main()
