@@ -30,7 +30,7 @@ When the user starts the software, a login view will be displayed. If the user h
 - The user can generate a list of primers for a selected DNA sequence (DONE)
   - The primers generated will contain an automatically generated name and a sequence corresponding to the region it anneals to in the DNA sequence
   - The primers will be added to the SQL database and mapped to the DNA sequence they are used to sequence
-- The user can export primers generated for the DNA sequence in spreadsheet format (DONE)
+- The user can export primers generated for the DNA sequence in spreadsheet format
   - The spreadsheet will be formatted so that the user can copy paste the primer list into ordering sheet of primer synthesis company
 - The user can log out from the system
 
