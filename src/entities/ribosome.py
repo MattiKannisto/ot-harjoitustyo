@@ -17,7 +17,7 @@ class Ribosome:
         if len(dna_sequence) < CODON_LENGTH or self.is_stop_codon(dna_sequence[:CODON_LENGTH]):
             self.start_codon_encountered = False
             return ""
-        elif self.start_codon_encountered:
+        if self.start_codon_encountered:
             return CODON_CHART[dna_sequence[:CODON_LENGTH]] + self.translate(dna_sequence[CODON_LENGTH:])
         if self.is_start_codon(dna_sequence[:CODON_LENGTH]):
             self.start_codon_encountered = True
@@ -31,7 +31,6 @@ class Ribosome:
         with open(os.path.join(directory_name, "translation.csv"), 'w') as csvfile:
             csvfile.seek(0)
             csv.writer(csvfile, delimiter=',').writerow([translation])
-
 
     def is_start_codon(self, codon):
         return codon == START_CODON

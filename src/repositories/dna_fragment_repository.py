@@ -1,26 +1,32 @@
 from entities.dna_fragment import DnaFragment
-from database_connection import get_database_connection
+from database_connection import get_connection_to_database
+
+
+def get_dna_fragment_row(row):
+    dna_fragment = DnaFragment(row["name"], row["sequence"]) if row else None
+    return dna_fragment
 
 
 class DnaFragmentRepository:
     def __init__(self, connection_to_database):
         self.connection_to_database = connection_to_database
+        self.cursor = self.connection_to_database.cursor()
 
-    def create(self, dna_fragment):
-        cursor = self.connection_to_database.cursor()
-
-        cursor.execute("insert into dna_fragment (name, sequence) values (?, ?)"), (dna_fragment.name, dna_fragment.sequence))
-
+    def create(self, name, sequence):
+        self.cursor.execute("insert into dna_fragment (name, sequence) values (?, ?)",
+                            (name, sequence))
         self.connection_to_database.commit()
 
     def find_by_name(self, name):
-        cursor=self._connection.cursor()
-
-        cursor.execute(
+        self.cursor.execute(
             'select * from dna_fragment where name = ?',
             (name,)
         )
+        return self.cursor.fetchone()
 
-        return get_user_by_row(cursor.fetchone())
+    def find_all(self):
+        self.cursor.execute("select * from dna_fragment")
+        return list(self.cursor.fetchall())
 
-dna_fragment_repository=DnaFragmentRepository(get_connection_to_database())
+
+dna_fragment_repository = DnaFragmentRepository(get_connection_to_database())

@@ -6,6 +6,8 @@ DnaSequencingToolPython-sovellus mahdollistaa automatisoidun sekvensointialukkei
 
 [Vaatimusmäärittely](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[Arkkitehtuuri](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 Sovelluksen käyttämistä ja testaamista varten tarvitaan vähintään [Pythonin versio 3.8](https://www.python.org/downloads/release/python-380/) ja [poetry](https://python-poetry.org/) tulee olla asennettuna. Ennen sovelluksen käyttämistä, **asenna riippuvuudet komennolla**: poetry install
 

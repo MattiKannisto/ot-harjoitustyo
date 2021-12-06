@@ -24,13 +24,13 @@ When the user starts the software, a login view will be displayed. If the user h
 - The user can add new DNA sequences (DONE)
   - A DNA sequence needs to contain a name and a string of characters (DONE)
     - Only characters 'A', 'T', 'G' and 'C' are allowed. If the DNA sequence contains other characters, it will not be added (DONE)
-  - The DNA sequences will be stored in an SQL database
-- The user can browse his/her DNA sequences
+  - The DNA sequences will be stored in an SQL database (DONE)
+- The user can browse his/her DNA sequences (DONE)
 - The user can export the DNA sequence in FASTA format
 - The user can generate a list of primers for a selected DNA sequence (DONE)
-  - The primers generated will contain an automatically generated name and a sequence corresponding to the region it anneals to in the DNA sequence
+  - The primers generated will contain an automatically generated name and a sequence corresponding to the region it anneals to in the DNA sequence (DONE)
   - The primers will be added to the SQL database and mapped to the DNA sequence they are used to sequence
-- The user can export primers generated for the DNA sequence in spreadsheet format
+- The user can export primers generated for the DNA sequence in spreadsheet format (DONE)
   - The spreadsheet will be formatted so that the user can copy paste the primer list into ordering sheet of primer synthesis company
 - The user can log out from the system
 
