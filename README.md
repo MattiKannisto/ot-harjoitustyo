@@ -16,6 +16,8 @@ Sovelluksen käyttämistä ja testaamista varten tarvitaan vähintään [Pythoni
 
 **Ohjelman käynnistäminen:** poetry run invoke start
 
+Jos sovellusta käytetään virtuaalityöasemalla ja saadaan virheilmoitus 'database is locked', tulee toimia [kurssin ohjeiden mukaisesti](https://ohjelmistotekniikka-hy.github.io/python/toteutus#sqlite-tietokanta-lukkiutuminen-virtuaality%C3%B6asemalla)
+
 **Testien suorittaminen:** poetry run invoke test
 
 **Testikattavuusraportin generoiminen:** poetry run invoke coverage-report
