@@ -1,6 +1,9 @@
 # DnaSequencingToolPython
 DnaSequencingToolPython-sovellus mahdollistaa automatisoidun sekvensointialukkeiden suunnittelun käyttäjän antamille DNA-sekvensseille. Sovellus tarkistaa, että käyttäjän antama DNA-sekvenssi sisältää ainoastaan kirjaimia 'A', 'T', 'G' ja 'C'. Validi DNA-sekvenssi on myös mahdollista kääntää proteiinisekvenssiksi, jos siinä on aloituskodoni 'ATG' oikeassa lukukehyksessä.
 
+## Releaset
+[Viikon 5 release](https://github.com/MattiKannisto/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Dokumentaatio
 [Tuntikirjanpito](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
