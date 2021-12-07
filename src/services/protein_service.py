@@ -9,9 +9,17 @@ START_CODON = 'ATG'
 STOP_CODONS = ['TAA', 'TAG']
 
 
-class Ribosome:
+class ProteinService:
     def __init__(self):
         self.start_codon_encountered = False
+
+    def attempt_translation_and_return_notification(self, dna_fragment, directory):
+        if dna_fragment.get_sequence():
+            translation = self.translate(dna_fragment.get_sequence())
+            self.write_translation_to_file(
+                directory + "/translations", translation)
+            return ["Translation of the DNA fragment '" + dna_fragment.get_name(
+            ) + "' added to folder " + directory + "/translations", "yellow"]
 
     def translate(self, dna_sequence):
         if len(dna_sequence) < CODON_LENGTH or self.is_stop_codon(dna_sequence[:CODON_LENGTH]):

@@ -1,7 +1,7 @@
 from tkinter import filedialog
 from tkinter import *
 from entities.dna_fragment import DnaFragment
-from entities.ribosome import Ribosome
+from services.protein_service import ProteinService
 from services.dna_fragment_service import DnaFragmentService
 from services.primer_service import PrimerService
 from ui.settings import SettingsView
@@ -10,7 +10,7 @@ from ui.login import Login
 
 class UserInterface():
     def __init__(self):
-        self.ribosome = Ribosome()
+        self.protein_service = ProteinService()
         self.dna_fragment = DnaFragment()
         self.primer_service = PrimerService()
         self.dna_fragment_service = DnaFragmentService()
@@ -143,22 +143,19 @@ class UserInterface():
             self.add_button["state"] = DISABLED
         else:
             self.add_button["state"] = NORMAL
+
+    def ask_for_user_directory_if_not_specified(self):
+        if self.directory == "":
+            self.directory = filedialog.askdirectory()
         
     def translate(self):
-        if self.directory == "":
-            self.directory = filedialog.askdirectory()
-        if self.dna_fragment.get_sequence() != None:
-            translation = self.ribosome.translate(
-                self.dna_fragment.get_sequence())
-            self.ribosome.write_translation_to_file(
-                self.directory + "/translations", translation)
-            self.notifications.insert(0, ["Translation of the DNA fragment '" + self.dna_fragment.get_name(
-            ) + "' added to folder " + self.directory + "/translations", "yellow"])
-            self.update_notification_area()
+        self.ask_for_user_directory_if_not_specified()
+        notification = self.protein_service.attempt_translation_and_return_notification(self.dna_fragment, self.directory)
+        self.add_notification(notification)
+        self.update_notification_area()
 
     def generate_sequencing_primers(self):
-        if self.directory == "":
-            self.directory = filedialog.askdirectory()
+        self.ask_for_user_directory_if_not_specified()
         self.primer_service.set_directory_name(self.directory + "/primers")
         if self.dna_fragment.get_sequence() is not None:
             if self.primer_length != '':
