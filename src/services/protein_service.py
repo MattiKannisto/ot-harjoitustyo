@@ -10,16 +10,31 @@ STOP_CODONS = ['TAA', 'TAG']
 
 
 class ProteinService:
+    """A class responsible for protein related application logic
+    """
+
     def __init__(self):
+        """A constructor for creating a new ProteinService object
+        """
+
         self.start_codon_encountered = False
 
     def attempt_translation_and_return_notification(self, dna_fragment, directory):
-        if dna_fragment.get_sequence():
-            translation = self.translate(dna_fragment.get_sequence())
+        """A method for attempting to translate the DNA fragment into a protein and returning a notification on the failure or successfulness of this action
+
+        Args:
+            dna_fragment: The DNA fragment as a DnaFragment object
+            directory: Directory into which the output file containing the translation will be saved
+
+        Returns:
+            An array of two strings of characters containing a notification text and a color of the notification if the DNA fragment's sequence is not None
+        """
+
+        if dna_fragment.sequence:
+            translation = self.translate(dna_fragment.sequence)
             self.write_translation_to_file(
                 directory + "/translations", translation)
-            return ["Translation of the DNA fragment '" + dna_fragment.get_name(
-            ) + "' added to folder " + directory + "/translations", "yellow"]
+            return ["Translation of the DNA fragment '" + dna_fragment.name + "' added to folder " + directory + "/translations", "yellow"]
 
     def translate(self, dna_sequence):
         if len(dna_sequence) < CODON_LENGTH or self.is_stop_codon(dna_sequence[:CODON_LENGTH]):

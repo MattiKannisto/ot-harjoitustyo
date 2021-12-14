@@ -20,24 +20,6 @@ class DnaFragment:
         self.name = name
         self.sequence = sequence
 
-    def get_name(self):
-        """Returns the name of the DNA fragment
-
-        Returns:
-            DNA fragment name as a string of characters
-        """
-
-        return self.name
-
-    def get_sequence(self):
-        """Returns the nucleotide sequence of the DNA fragment
-
-        Returns:
-            DNA fragment nucleotide sequence as a string of characters
-        """
-
-        return self.sequence
-
     def get_reverse_complement(self):
         """Returns the reverse complement of the nucleotide sequence
 

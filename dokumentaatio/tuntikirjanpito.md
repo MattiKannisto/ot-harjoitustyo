@@ -15,4 +15,11 @@
 |06.12.2021|1        |Alukkeiden spreadsheet-tallennuksen tekeminen       |
 |06.12.2021|2        |GUI:n parantelua                                    |
 |06.12.2021|1        |DNA-fragmentin lisäämisen sekvenssikaavion tekeminen|
-|Yhteensä  |35.25    |                                                    |
+|10.12.2021|4        |Login- ja create new account -testailua GUI:lla     |
+|11.12.2021|3        |Käyttäjän lisääminen tietokantaan, GUI:n parantelua |
+|12.12.2021|3        |Account servicen tekeminen                          |
+|12.12.2021|5        |Alukkeiden lisääminen tietokantaan, GUI:n parantelua|
+|13.12.2021|1.75     |Docstring-dokumentaation tekemistä                  |
+|13.12.2021|3        |Testien tekemistä entiteeteille ja serviceille      |
+|14.12.2021|3        |Docstringien ja käyttöohjeen tekemistä              |
+|Yhteensä  |58       |                                                    |

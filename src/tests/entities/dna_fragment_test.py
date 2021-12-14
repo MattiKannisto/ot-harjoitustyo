@@ -13,23 +13,18 @@ class TestDnaFragment(unittest.TestCase):
             self.valid_dna_fragment_name, self.valid_dna_sequence)
         self.dna_fragment_with_none_as_name_and_sequence = DnaFragment()
 
-    def test_get_name_returns_correct_string(self):
-        self.assertEqual(self.valid_dna_fragment.get_name(),
+    def test_newly_created_dna_fragment_has_correct_name(self):
+        self.assertEqual(self.valid_dna_fragment.name,
                          self.valid_dna_fragment_name)
 
-    def test_get_name_returns_none_if_name_has_not_been_given(self):
-        self.assertEqual(self.dna_fragment_with_none_as_name_and_sequence.get_name(), None)
-
-    def test_get_sequence_returns_correct_string(self):
-        self.assertEqual(self.valid_dna_fragment.get_sequence(),
+    def test_newly_created_dna_fragment_has_correct_sequence(self):
+        self.assertEqual(self.valid_dna_fragment.sequence,
                          self.valid_dna_sequence)
-
-    def test_get_sequence_returns_none_if_sequence_has_not_been_given(self):
-        self.assertEqual(self.dna_fragment_with_none_as_name_and_sequence.get_sequence(), None)
 
     def test_get_reverse_complement_returns_correct_dna_sequence(self):
         self.assertEqual(self.valid_dna_fragment.get_reverse_complement(
         ), self.valid_dna_sequence_reverse_complement)
 
     def test_get_reverse_complement_returns_none_if_no_dna_sequence_has_been_given(self):
-        self.assertEqual(self.dna_fragment_with_none_as_name_and_sequence.get_reverse_complement(), None)
+        self.assertEqual(
+            self.dna_fragment_with_none_as_name_and_sequence.get_reverse_complement(), None)

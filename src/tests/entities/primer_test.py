@@ -5,14 +5,17 @@ from entities.primer import Primer
 class TestPrimer(unittest.TestCase):
     def setUp(self):
         self.name = "test_primer_1"
-        self.sequence_with_length_of_20 = "ATTAGTCGATGATTATACGG"
-        self.primer = Primer(self.name, self.sequence_with_length_of_20)
+        self.sequence = "ATTAGTCGATGATTATACGG"
+        self.template_dna_name = "valid_dna_fragment_name"
+        self.primer = Primer(self.name, self.sequence, self.template_dna_name)
 
-    def test_get_name_returns_correct_string(self):
-        self.assertEqual(self.primer.get_name(), self.name)
+    def test_newly_created_primer_has_correct_name(self):
+        self.assertEqual(self.primer.name, self.name)
 
-    def test_get_sequence_returns_correct_string(self):
-        self.assertEqual(self.primer.get_sequence(), self.sequence_with_length_of_20)
+    def test_newly_created_primer_has_correct_sequence(self):
+        self.assertEqual(self.primer.sequence,
+                         self.sequence)
 
-    def test_get_length_returns_correct_integer(self):
-        self.assertEqual(self.primer.get_length(), 20)
+    def test_newly_created_primer_has_correct_template_dna_name(self):
+        self.assertEqual(self.primer.template,
+                         self.template_dna_name)
