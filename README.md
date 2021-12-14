@@ -9,6 +9,8 @@ DnaSequencingToolPython-sovellus mahdollistaa automatisoidun sekvensointialukkei
 ## Dokumentaatio
 [Tuntikirjanpito](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Käyttöohje](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Arkkitehtuuri](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
