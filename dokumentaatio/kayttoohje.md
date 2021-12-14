@@ -1,5 +1,5 @@
 # Instructions for use
-## Before starting the application
+### Before starting the application
 In order to use the application, one needs to download the source code of the application from the most up to date release from [the GitHub repository of the project](https://github.com/MattiKannisto/ot-harjoitustyo). The application uses a MySQL database which needs to be initialized prior to first use of the application. This can be done with command **poetry run invoke initialize**.
 
 ### Starting the application
