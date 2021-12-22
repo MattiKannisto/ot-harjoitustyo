@@ -1,36 +1,24 @@
-COMPLEMENTARY_NUCLEOTIDES = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
-
-
 class DnaFragment:
     """A class representing a DNA fragment
 
     Attributes:
         name: Name of the DNA fragment as a string of characters
-        sequence: Nucleotide sequence of the DNA fragment as a string of characters
+        forward_strand: Forward strand of the nucleotide sequence of the DNA fragment as a string of characters
+        reverse_strand: Reverse strand of the nucleotide sequence of the DNA fragment as a string of characters
+        owner: Username of the account that has added this DNA fragment
     """
 
-    def __init__(self, name=None, sequence=None):
+    def __init__(self, name, forward_strand, reverse_strand, owner):
         """Constructor of the class for creating a new DNA fragment
 
         Args:
             name: Name of the DNA fragment as a string of characters
-            sequence: Nucleotide sequence of the DNA fragment as a string of characters
+            forward_strand: Forward strand of the nucleotide sequence of the DNA fragment as a string of characters
+            reverse_strand: Reverse strand of the nucleotide sequence of the DNA fragment as a string of characters
+            owner: Username of the account that has added this DNA fragment
         """
 
         self.name = name
-        self.sequence = sequence
-
-    def get_reverse_complement(self):
-        """Returns the reverse complement of the nucleotide sequence
-
-        Returns:
-            Reverse complement of the nucleotide sequence as a string of characters
-        """
-
-        if not self.sequence:
-            return
-
-        reverse_complement = ""
-        for nucleotide in reversed(self.sequence):
-            reverse_complement += COMPLEMENTARY_NUCLEOTIDES[nucleotide]
-        return reverse_complement
+        self.forward_strand = forward_strand
+        self.reverse_strand = reverse_strand
+        self.owner = owner

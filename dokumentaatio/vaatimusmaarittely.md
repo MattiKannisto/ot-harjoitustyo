@@ -16,8 +16,8 @@ When the user starts the software, a login view will be displayed. If the user h
 ## Basic functionalities
 ### If the user has not logged in to the system
 - The user can create a new user account (**DONE**)
-  - The username needs to be unique and needs to be at least 5 characters long
-  - The password needs to be at least 10 characters long and at maximum 30 characters long
+  - The username needs to be unique and needs to be at least 5 characters long (**DONE**)
+  - The password needs to be at least 10 characters long and at maximum 30 characters long (**DONE**)
 - The user can log in if he/she has already created a user account (**DONE**)
 
 ### If the user has logged in to the system
@@ -26,7 +26,6 @@ When the user starts the software, a login view will be displayed. If the user h
     - Only characters 'A', 'T', 'G' and 'C' are allowed. If the DNA sequence contains other characters, it will not be added (**DONE**)
   - The DNA sequences will be stored in an SQL database (**DONE**)
 - The user can browse his/her DNA sequences (**DONE**)
-- The user can export the DNA sequence in FASTA format
 - The user can generate a list of primers for a selected DNA sequence (**DONE**)
   - The primers generated will contain an automatically generated name and a sequence corresponding to the region it anneals to in the DNA sequence (**DONE**)
   - The primers will be added to the SQL database and mapped to the DNA sequence they are used to sequence (**DONE**)

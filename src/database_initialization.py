@@ -29,7 +29,9 @@ def create_all_tables(cursor):
     cursor.execute('''
         create table dna_fragment (
             name text primary key,
-            sequence text
+            forward_strand text,
+            reverse_strand text,
+            owner text
         );
     ''')
 

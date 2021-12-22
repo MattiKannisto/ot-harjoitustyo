@@ -22,4 +22,10 @@
 |13.12.2021|1.75     |Docstring-dokumentaation tekemistä                  |
 |13.12.2021|3        |Testien tekemistä entiteeteille ja serviceille      |
 |14.12.2021|3        |Docstringien ja käyttöohjeen tekemistä              |
-|Yhteensä  |58       |                                                    |
+|17.12.2021|3        |GUI:n jakaminen useampaan luokkaan                  |
+|18.12.2021|4        |Sovelluslogiikan siirtämistä GUI:lta serviceille    |
+|19.12.2021|5        |Virheellisten syötteiden käsittelyn lisääminen      |
+|20.12.2021|8        |Ohje-toimintojen sisällyttäminen GUI:iin            |
+|21.12.2021|6        |GUI:n service-luokkien refaktorointia               |
+|22.12.2021|6        |Testien tekemistä ja bugien korjailua               |
+|Yhteensä  |90       |                                                    |

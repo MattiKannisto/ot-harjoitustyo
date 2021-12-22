@@ -5,26 +5,26 @@ from entities.dna_fragment import DnaFragment
 class TestDnaFragment(unittest.TestCase):
     def setUp(self):
         # Beginning of E. coli pykF gene (NCBI Ref: NC_000913.3)
-        self.valid_dna_sequence = "ATGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC"
-        self.valid_dna_fragment_name = "Valid DNA fragment name"
-        self.valid_dna_sequence_reverse_complement = "GCATTTTAGCTAACATCTCTTCAGATTCGGTTTTCGGTCCGATGGTGCAAACAATTTTGGTCTTTTTCAT"
+        self.forward_strand = "ATGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC"
+        self.name = "Valid DNA fragment name"
+        self.reverse_strand = "GCATTTTAGCTAACATCTCTTCAGATTCGGTTTTCGGTCCGATGGTGCAAACAATTTTGGTCTTTTTCAT"
+        self.owner = "test_username"
 
-        self.valid_dna_fragment = DnaFragment(
-            self.valid_dna_fragment_name, self.valid_dna_sequence)
-        self.dna_fragment_with_none_as_name_and_sequence = DnaFragment()
+        self.dna_fragment = DnaFragment(
+            self.name, self.forward_strand, self.reverse_strand, self.owner)
 
     def test_newly_created_dna_fragment_has_correct_name(self):
-        self.assertEqual(self.valid_dna_fragment.name,
-                         self.valid_dna_fragment_name)
+        self.assertEqual(self.dna_fragment.name,
+                         self.name)
 
-    def test_newly_created_dna_fragment_has_correct_sequence(self):
-        self.assertEqual(self.valid_dna_fragment.sequence,
-                         self.valid_dna_sequence)
+    def test_newly_created_dna_fragment_has_correct_forward_strand(self):
+        self.assertEqual(self.dna_fragment.forward_strand,
+                         self.forward_strand)
 
-    def test_get_reverse_complement_returns_correct_dna_sequence(self):
-        self.assertEqual(self.valid_dna_fragment.get_reverse_complement(
-        ), self.valid_dna_sequence_reverse_complement)
+    def test_newly_created_dna_fragment_has_correct_reverse_strand(self):
+        self.assertEqual(self.dna_fragment.reverse_strand,
+                         self.reverse_strand)
 
-    def test_get_reverse_complement_returns_none_if_no_dna_sequence_has_been_given(self):
-        self.assertEqual(
-            self.dna_fragment_with_none_as_name_and_sequence.get_reverse_complement(), None)
+    def test_newly_created_dna_fragment_has_correct_owner(self):
+        self.assertEqual(self.dna_fragment.owner,
+                         self.owner)

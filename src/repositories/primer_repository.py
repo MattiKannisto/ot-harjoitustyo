@@ -1,21 +1,4 @@
-from entities.primer import Primer
 from database_connection import get_connection_to_database
-
-
-def generate_list_of_primers_from_rows(rows):
-    """A method that returns a list of Primer objects based on a list of tuples obtained from the database
-
-    Args:
-        rows: A list of tuples containing the primer information
-
-    Returns:
-        primers: A list of Primer objects
-    """
-
-    primers = []
-    for row in rows:
-        primers.append(Primer(row[0], row[1], row[2]) if row else None)
-    return primers
 
 
 class PrimerRepository:
@@ -45,32 +28,59 @@ class PrimerRepository:
                             (name, sequence, template_dna_name))
         self.connection_to_database.commit()
 
-    def count_by_template_dna_name(self, template_dna_name):
-        """Counts the rows from the table with a certain template_dna_name
+    def count_by_name_prefix_and_infix(self, prefix_and_infix):
+        """Counts the rows from the table with a certain prefix (same as template DNA name) and infix (_for or _rev)
 
         Args:
-            template_dna_name: Name of the template dna as a string of characters
+            prefix_and_infix: Primer name prefix and infix as a string of characters
+        Returns:
+            The number of rows in the table with the template_dna_name value corresponding to the string given as a parameter
+        """
+
+        self.cursor.execute(
+            "select count(*) from primer where name like ?", ('%' + prefix_and_infix + '%',))
+        return self.cursor.fetchone()[0]
+
+    def count_by_template_dna_name(self, template_dna_name):
+        """Counts the rows from the table with a certain template DNA name
+
+        Args:
+            template_dna_name: Name of the template DNA as a string of characters
         Returns:
             The number of rows in the table with the template_dna_name value corresponding to the string given as a parameter
         """
 
         self.cursor.execute(
             "select count(*) from primer where template_dna_name = ?", (template_dna_name,))
+        return self.cursor.fetchone()[0]
+
+    def find_by_sequence_and_template_dna_name(self, sequence, template_dna_name):
+        """Fetches a primer tuple from the database based on the sequence and template DNA name
+
+        Args:
+            sequence: Nucleotide sequence of the primer to be fetched from the database
+            template_dna_name: Name of the template DNA as a string of characters
+        """
+
+        self.cursor.execute(
+            "select * from primer where sequence = ? and template_dna_name = ?", (sequence, template_dna_name,))
+
         return self.cursor.fetchone()
 
+
     def find_all_by_template_dna_name(self, template_dna_name):
-        """Fetches all rows from the table with a certain template_dna_name and returns a list of Primer objects
+        """Fetches all rows from the table with a certain template_dna_name and returns a list of tuples in descending order of primer name
 
         Args:
             template_dna_name: Name of the template dna as a string of characters
         Returns:
-            A list of Primer objects
+            A list of tuples containing the primer information
         """
 
         self.cursor.execute(
             "select * from primer where template_dna_name = ?", (template_dna_name,))
 
-        return generate_list_of_primers_from_rows(self.cursor.fetchall())
+        return self.cursor.fetchall()
 
 
 primer_repository = PrimerRepository(get_connection_to_database())
