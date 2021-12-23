@@ -17,5 +17,5 @@ class TestPrimer(unittest.TestCase):
                          self.sequence)
 
     def test_newly_created_primer_has_correct_template_dna_name(self):
-        self.assertEqual(self.primer.template,
+        self.assertEqual(self.primer.template_dna_name,
                          self.template_dna_name)

@@ -18,20 +18,20 @@ def drop_all_tables(cursor):
 def create_all_tables(cursor):
     cursor.execute('''
         create table account (
-            username text primary key,
+            name text primary key,
             password text,
             directory text,
-            sequencing_primer_length int,
-            sequencing_primer_gc_content float
+            primer_length int,
+            primer_gc_content float
         );
     ''')
 
     cursor.execute('''
         create table dna_fragment (
             name text primary key,
-            forward_strand text,
-            reverse_strand text,
-            owner text
+            for_strand text,
+            rev_strand text,
+            owner_name text
         );
     ''')
 

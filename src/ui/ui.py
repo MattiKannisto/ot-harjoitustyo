@@ -10,6 +10,7 @@ SLOW_UPDATE_SPEED = 2
 FAST_UPDATE_SPEED = 0.1
 ULTRA_FAST_UPDATE_SPEED = 0.01
 
+
 class UserInterface():
     def __init__(self, root):
         """[summary]
@@ -19,13 +20,15 @@ class UserInterface():
         """
         self.root = root
         self._add_menus()
-        
+
         self.account_service = AccountService()
 
-        self.main_view = MainView(self.root, self.account_service, self.options)
+        self.main_view = MainView(
+            self.root, self.account_service, self.options)
         self.login_view = LoginView(self.root, self.account_service)
         self.settings_view = SettingsView(self.root, self.account_service)
-        self.create_account_view = CreateAccountView(self.root, self.account_service, self.options)
+        self.create_account_view = CreateAccountView(
+            self.root, self.account_service, self.options)
 
         self.instructions_frame = Frame(self.root)
         self.instructions_frame.grid(row=0, column=0, sticky=W+E)
@@ -96,24 +99,25 @@ class UserInterface():
         for i in range(len(string)+40):
             help_string = ""
             if i < 40:
-                for j in range(40-i):                   
-                   help_string += " "
+                for j in range(40-i):
+                    help_string += " "
                 help_string = help_string + string[:i]
             elif (len(string)-i) < 40:
                 help_string = help_string + string[i-40:i]
-                for j in range(40-i):                   
-                   help_string += " "
+                for j in range(40-i):
+                    help_string += " "
             else:
                 help_string = help_string + string[i-40:i]
             list.append([help_string, color])
-        return list  
+        return list
 
     def _help(self):
         active_view = self._get_active_view()
         help_string = active_view.help_string
         if active_view == self.main_view:
             self.main_view.help()
-        help_notifications = self._generate_notifications_from_string(help_string, "red", [])
+        help_notifications = self._generate_notifications_from_string(
+            help_string, "red", [])
         self.notification_update_speed = FAST_UPDATE_SPEED
         self.instructions.extend(reversed(help_notifications))
 
@@ -122,13 +126,14 @@ class UserInterface():
         self._get_instructions_set_default(active_view)
         if self.instructions and ((time.time() - self.login_timer_start) > self.notification_update_speed):
             if self.instructions_frame and len(self.instructions) > 0:
-                self.instructions = self.instructions[:-1]                
+                self.instructions = self.instructions[:-1]
                 self.login_timer_start = time.time()
         if self.instructions and self.instructions_frame and self.instructions_label:
-            self.instructions_label.config(text=self.instructions[-1][0], fg=self.instructions[-1][1])
+            self.instructions_label.config(
+                text=self.instructions[-1][0], fg=self.instructions[-1][1])
             if self.instructions[-1][0][0].isspace() and self.instructions[-1][0][1].isspace():
                 self.instructions_label.grid(sticky=E)
             else:
                 self.instructions_label.grid(
-                row=0, column=0, sticky=W)
+                    row=0, column=0, sticky=W)
         self.root.after(1, self._wait_for_timer_and_return_instructions_text)

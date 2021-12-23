@@ -9,55 +9,56 @@ class DnaFragmentRepository:
         """Constructor of the class
 
         Args:
-            connection_to_database: An object for creating a connection to the database        
+            connection_to_database: An object for creating a connection to the database
         """
 
-        self.connection_to_database = connection_to_database
-        self.cursor = self.connection_to_database.cursor()
+        self._connection_to_database = connection_to_database
+        self._cursor = self._connection_to_database.cursor()
 
-    def create(self, name, forward_strand, reverse_strand, owner):
+    def create(self, name, for_strand, rev_strand, owner_name):
         """A method for creating a new DnaFragment object and storing it in the database
 
         Args:
-            name: Name of the DNA fragment to be added to the database as a string of characters
-            forward_strand: Forward strand of the nucleotide sequence of the DNA fragment to be added to the database as a string of characters
-            reverse_strand: Reverse strand of the nucleotide sequence of the DNA fragment to be added to the database as a string of characters
-            owner: Username of the account that has added the DNA fragment as a string of characters
+            name: Name of the DNA fragment as a string
+            for_strand: Forward strand of the DNA fragment as a string
+            rev_strand: Reverse strand of the DNA fragment as a string
+            owner_name: name of the account that has added the DNA fragment as a string
         """
 
-        self.cursor.execute("insert into dna_fragment (name, forward_strand, reverse_strand, owner) values (?, ?, ?, ?)",
-                            (name, forward_strand, reverse_strand, owner))
-        self.connection_to_database.commit()
+        self._cursor.execute("insert into dna_fragment (name, for_strand, rev_strand, owner_name) values (?, ?, ?, ?)",
+                             (name, for_strand, rev_strand, owner_name))
+        self._connection_to_database.commit()
 
-    def find_by_name_and_owner(self, name, owner):
-        """A method for getting a DNA fragment from the database based on its name and owner username
+    def find_by_name_and_owner_name(self, name, owner_name):
+        """A method for getting a DNA fragment from the database based on its name and owner_name
 
         Args:
-            name: Name of the DNA fragment to be fetched from the database as a string of characters
-            owner: Username of the account that has added the DNA fragment to be fetched from the database as a string of characters
+            name: Name of the DNA fragment to be fetched as a string
+            owner_name: Name of the account that has added the DNA fragment to be fetched as a string
 
         Returns:
             The DNA fragment as a tuple
         """
 
-        self.cursor.execute(
-            'select * from dna_fragment where name = ? and owner = ?',
-            (str(name), str(owner),)
+        self._cursor.execute(
+            'select * from dna_fragment where name = ? and owner_name = ?',
+            (str(name), str(owner_name),)
         )
-        return self.cursor.fetchone()
+        return self._cursor.fetchone()
 
-    def find_all_by_owner(self, owner):
-        """A method for getting all DnaFragments from the database based on the owner username
+    def find_all_by_owner_name(self, owner_name):
+        """A method for getting all DnaFragments from the database based on the owner_name name
 
         Args:
-            owner: Username of the account that has added the DNA fragment to be fetched from the database as a string of characters
+            owner_name: name of the account that has added the DNA fragment to be fetched as a string
 
         Returns:
             A list of tuples
         """
 
-        self.cursor.execute("select * from dna_fragment where owner = ?", (owner,))
-        return list(self.cursor.fetchall())
+        self._cursor.execute(
+            "select * from dna_fragment where owner_name = ?", (owner_name,))
+        return list(self._cursor.fetchall())
 
 
 dna_fragment_repository = DnaFragmentRepository(get_connection_to_database())

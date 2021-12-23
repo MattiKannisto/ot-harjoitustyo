@@ -11,18 +11,18 @@ class CreateAccountView():
         self.selected_directory = ""
         self.instructions_label = None
         self.instructions = [["Please fill in all fields:", "black"]]
-        self.help_string = "Username must be unique and more than 5 characters long. Password has to be more than 10 and less than 30 characters long. Re-typed password and password have to match. Working directory needs to be selected. Please do not close the window when selecting the directory from 'X'. Click 'Create' when all fields are filled or 'Cancel' if you do not want to create new account."
+        self.help_string = "name must be unique and more than 5 characters long. Password has to be more than 10 and less than 30 characters long. Re-typed password and password have to match. Working directory needs to be selected. Please do not close the window when selecting the directory from 'X'. Click 'Create' when all fields are filled or 'Cancel' if you do not want to create new account."
 
     def active(self):
         if not self.frame:
             self.frame = Frame(self.root)
             self.frame.grid(row=1, column=0)
 
-            self.username_instructions = Label(
+            self.name_instructions = Label(
                 self.frame, text="Userame:")
-            self.username_instructions.grid(row=1, column=0)
-            self.username_input = Entry(self.frame)
-            self.username_input.grid(row=1, column=1)
+            self.name_instructions.grid(row=1, column=0)
+            self.name_input = Entry(self.frame)
+            self.name_input.grid(row=1, column=1)
 
             self.password_instructions = Label(
                 self.frame, text="Password:")
@@ -56,14 +56,15 @@ class CreateAccountView():
         self.account_service.creating_new_account = False
 
     def create_user_account(self):
-        username = Entry.get(self.username_input)
+        name = Entry.get(self.name_input)
         password = Entry.get(self.password_input)
         re_typed_password = Entry.get(self.re_typed_password_input)
-        self.instructions.extend(self.account_service.create_account(username, password, re_typed_password, self.selected_directory, []))
+        self.instructions.extend(self.account_service.create_account(
+            name, password, re_typed_password, self.selected_directory, []))
 
     def select_directory(self):
         self.selected_directory = filedialog.askdirectory(initialdir="~")
- 
+
     def inactive(self):
         if self.frame:
             self.frame.destroy()

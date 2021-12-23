@@ -13,8 +13,10 @@ class TestProteinService(unittest.TestCase):
         self.start_codon = "ATG"
         self.stop_codon = "TAA"
 
-        self.notification_that_no_directory = ["Please set a working directory in the settings first!", "red"]
-        self.notification_that_couldnt_translate = ["Could not be translated, no start codon found!", "yellow"]
+        self.notification_that_no_directory = [
+            "Please set a working directory in the settings first!", "red"]
+        self.notification_that_couldnt_translate = [
+            "Could not be translated, no start codon found!", "yellow"]
 
     def test_newly_created_protein_service_has_not_encountered_a_start_codon(self):
         self.assertEqual(self.protein_service._start_codon_encountered, False)
@@ -40,10 +42,12 @@ class TestProteinService(unittest.TestCase):
             self.start_codon), False)
 
     def test_translate_produces_correct_protein_sequence_from_dna_sequence(self):
-        self.assertEqual(self.protein_service._translate(self.valid_dna_sequence), self.valid_dna_sequence_translation)
+        self.assertEqual(self.protein_service._translate(
+            self.valid_dna_sequence), self.valid_dna_sequence_translation)
 
     def test_translate_ignores_codons_before_start_codon(self):
-        self.assertEqual(self.protein_service._translate(self.dna_sequence_that_doesnt_start_with_start_codon), self.valid_dna_sequence_translation)
+        self.assertEqual(self.protein_service._translate(
+            self.dna_sequence_that_doesnt_start_with_start_codon), self.valid_dna_sequence_translation)
 
 #    def test_attempt_translation_and_return_notification_without_directory(self):
 #        self.protein_service.attempt_translation_and_return_notification()

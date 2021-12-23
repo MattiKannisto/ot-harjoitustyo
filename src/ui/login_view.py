@@ -6,18 +6,19 @@ class LoginView():
         self.root = root
         self.account_service = account_service
         self.frame = None
-        self.help_string = "If you do not have created an account, please click 'Create user account' button. Otherwise you should enter your username and password below to log in."
-        self.instructions = [["Please log in by typing your credentials below:", "black"]]
+        self.help_string = "If you do not have created an account, please click 'Create user account' button. Otherwise you should enter your name and password below to log in."
+        self.instructions = [
+            ["Please log in by typing your credentials below:", "black"]]
 
     def active(self):
         if not self.frame:
             self.frame = Frame(self.root)
             self.frame.grid(row=1, column=0)
 
-            self.username_instructions = Label(self.frame, text="Username:")
-            self.username_instructions.grid(row=1, column=0)
-            self.username_input = Entry(self.frame)
-            self.username_input.grid(row=1, column=1)
+            self.name_instructions = Label(self.frame, text="name:")
+            self.name_instructions.grid(row=1, column=0)
+            self.name_input = Entry(self.frame)
+            self.name_input.grid(row=1, column=1)
 
             self.password_instructions = Label(self.frame, text="Password:")
             self.password_instructions.grid(row=1, column=2)
@@ -34,9 +35,9 @@ class LoginView():
                 row=2, column=3, columnspan=2, sticky=E)
 
     def _attempt_login(self):
-        username = Entry.get(self.username_input)
+        name = Entry.get(self.name_input)
         password = Entry.get(self.password_input)
-        self.account_service.login(username, password)
+        self.account_service.login(name, password)
         if not self.account_service.logged_in_user:
             self.instructions.append(["INCORRECT CREDENTIALS", "red"])
 
