@@ -22,7 +22,7 @@ The current test classes reach only 72 % coverage:
 
 ![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/coverage_report)
 
-Higher test coverage would be desireable but more comprehensive testing could not be done before the deadline of the project. Furthermore, the existing tests should cover more exceptions and wider range of parameter values given to the tested functions. It would be especially important to more tests for the primer service class as it is central to the functionality of the application.
+Higher test coverage would be desirable but more comprehensive testing could not be done before the deadline of the project. It should be noted here that the coverage is increased by entity tests which are less crucial for functionalities of the application than e.g. service tests as service classes are more likely to contain bugs. Furthermore, the existing tests should cover more exceptions and wider range of parameter values given to the tested functions. It would be especially important to more tests for the primer service class as it is central to the functionality of the application.
 
 ## Systems testing
 
