@@ -14,7 +14,8 @@ class TestAccount(unittest.TestCase):
         self.account_with_default_primer_settings = Account(
             self.name, self.password, self.directory)
         self.account_with_custom_primer_settings = Account(
-            self.name, self.password, self.directory, self.custom_primer_length, self.custom_primer_gc_content)
+            self.name, self.password, self.directory,
+            self.custom_primer_length, self.custom_primer_gc_content)
 
     def test_newly_created_account_has_correct_name(self):
         self.assertEqual(

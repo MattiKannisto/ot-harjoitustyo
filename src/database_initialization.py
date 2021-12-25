@@ -2,6 +2,12 @@ from database_connection import get_connection_to_database
 
 
 def drop_all_tables(cursor):
+    """A method for dropping all tables
+
+    Args:
+        cursor: A cursor object for executing SQLite operations
+    """
+
     cursor.execute('''
         drop table if exists account;
     ''')
@@ -16,6 +22,12 @@ def drop_all_tables(cursor):
 
 
 def create_all_tables(cursor):
+    """A method for creating all tables needed by the application
+
+    Args:
+        cursor: A cursor object for executing SQLite operations
+    """
+
     cursor.execute('''
         create table account (
             name text primary key,
@@ -45,6 +57,9 @@ def create_all_tables(cursor):
 
 
 def initialize():
+    """A method for initializing the database
+    """
+
     connection = get_connection_to_database()
     cursor = connection.cursor()
 

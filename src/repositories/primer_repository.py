@@ -19,13 +19,25 @@ class PrimerRepository:
         """Creates a new primer in the database
 
         Args:
-            name: Name of the primer as a string. Also a primary key of the table
+            name: Name of the primer as a string
             sequence: Nucleotide sequence of the primer as a string
             template_dna_name: Name of the template DNA of the primer as a string
         """
 
-        self._cursor.execute("insert into primer (name, sequence, template_dna_name) values (?, ?, ?)",
+        self._cursor.execute("insert into primer (name, sequence, template_dna_name) "
+                             + "values (?, ?, ?)",
                              (name, sequence, template_dna_name))
+        self._connection_to_database.commit()
+
+    def delete_by_template_dna_name(self, template_dna_name):
+        """A method for deleting primers based on their template DNA's name
+
+        Args:
+            name: Name of the template DNA as a string
+        """
+
+        self._cursor.execute(
+            "delete from primer where template_dna_name = ?", (template_dna_name,))
         self._connection_to_database.commit()
 
     def count_by_name_prefix_and_infix(self, prefix_and_infix):

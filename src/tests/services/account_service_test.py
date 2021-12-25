@@ -13,7 +13,7 @@ class MockUpAccountRepository:
     def find_by_name(self, name):
         for account in self.accounts:
             if account[0] == name:
-                return account
+                  return account
         return None
 
     def find_by_directory(self, directory):
@@ -38,10 +38,10 @@ class TestAccountService(unittest.TestCase):
 
     def test_name_already_in_use_returns_false_if_name_is_not_already_in_use(self):
         self.assertEqual(
-            self.account_service.name_already_in_use(self.name), False)
+            self.account_service._name_already_in_use(self.name), False)
 
     def test_name_already_in_use_returns_true_if_name_is_already_in_use(self):
         self.account_service.create_account(
             self.name, self.password, self.password, self.directory, [])
         self.assertEqual(
-            self.account_service.name_already_in_use(self.name), True)
+            self.account_service._name_already_in_use(self.name), True)

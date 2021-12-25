@@ -2,10 +2,10 @@ import sys
 from tkinter import *
 from ui.ui import UserInterface
 
+MAX_RECURSION_NEEDED_TO_TRANSLATE_DNA_TO_PROTEIN = 10**6
 
 def main():
-    # This will be needed for recursive translation of DNA sequences to protein sequences
-    sys.setrecursionlimit(10**6)
+    sys.setrecursionlimit(MAX_RECURSION_NEEDED_TO_TRANSLATE_DNA_TO_PROTEIN)
 
     root = Tk()
     root.title("DnaSequencingToolPython")

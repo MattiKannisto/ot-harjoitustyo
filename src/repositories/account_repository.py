@@ -9,21 +9,23 @@ class AccountRepository:
         """Constructor of the class
 
         Args:
-            connection_to_database: An object for creating a connection to the database        
+            connection_to_database: An object for creating a connection to the database
         """
 
         self._connection_to_database = connection_to_database
         self._cursor = self._connection_to_database.cursor()
 
     def create(self, name, password, directory, primer_length, primer_gc_content):
-        """A method for creating a new account and storing it to the database
+        """A method for creating a new account and storing it to the database. The
+           arguments are converted into correct types so that if they are passed
+           as e.g. strings, errors are not generated when storing to database
 
         Args:
             name: name of the account as a string
             password: Password of the account as a string
             directory: Directory where output files will be stored as a string
-            primer_length: Length of the sequencing primers that will be generated as an integer
-            primer_gc_content = GC content of the sequencing primers that will be generated as a float
+            primer_length: Length of the primers that will be generated as an integer
+            primer_gc_content = GC content of the primers that will be generated as a float
         """
 
         self._cursor.execute("insert into account (name, password, directory, "
@@ -44,7 +46,7 @@ class AccountRepository:
         self._connection_to_database.commit()
 
     def find_by_name_and_password(self, name, password):
-        """A method for getting an account from the database based on the name and password
+        """A method for getting an account from the database based on name and password
 
         Args:
             name: name of the account to be fetched from the database as a string
@@ -61,7 +63,7 @@ class AccountRepository:
         return self._cursor.fetchone()
 
     def find_by_name(self, name):
-        """A method for getting an account from the database based on the name
+        """A method for getting an account from the database based on name
 
         Args:
             name: name of the account to be fetched from the database as a string
@@ -77,7 +79,7 @@ class AccountRepository:
         return self._cursor.fetchone()
 
     def find_by_directory(self, directory):
-        """A method for getting an account from the database based on the directory
+        """A method for getting an account from the database based on directory
 
         Args:
             directory: Directory of the account to be fetched as a string
@@ -93,18 +95,22 @@ class AccountRepository:
         return self._cursor.fetchone()
 
     def update(self, name, password, directory, primer_length, primer_gc_content):
-        """A method for updating a user account in the database
+        """A method for updating a user account in the database. The
+           arguments are converted into correct types so that if they are passed
+           as e.g. strings, errors are not generated when storing to database
 
         Args:
             name: name of the account to be updated as a string
             password: Password of the account to be updated as a string
             directory: Directory of the account to be updated as a string
-            primer_length: Length of the sequencing primers of the account to be updated as an integer
-            primer_gc_content = GC content of the sequencing primers of the account to be updated as a float
+            primer_length: Length of the primer of the account to be updated as an integer
+            primer_gc_content = GC content of the primer of the account to be updated as a float
         """
 
-        self._cursor.execute("update account set name = ?, password = ?, directory = ?, primer_length = ?, primer_gc_content = ? where name = ?",
-                             (str(name), str(password), str(directory), int(primer_length), float(primer_gc_content), str(name)))
+        self._cursor.execute("update account set name = ?, password = ?, directory = ?,"
+                             + " primer_length = ?, primer_gc_content = ? where name = ?",
+                             (str(name), str(password), str(directory), int(primer_length),
+                              float(primer_gc_content), str(name)))
         self._connection_to_database.commit()
 
 

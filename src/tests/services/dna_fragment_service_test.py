@@ -26,9 +26,7 @@ class MockUpDnaFragmentRepository:
 
 class TestDnaFragmentService(unittest.TestCase):
     def setUp(self):
-        self.dna_fragment_service = DnaFragmentService(
-            MockUpDnaFragmentRepository())
-        # Beginning of E. coli pykF gene (NCBI Ref: NC_000913.3)
+        self.dna_fragment_service = DnaFragmentService(MockUpDnaFragmentRepository())
         self.valid_dna_sequence = "ATGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC"
         self.invalid_dna_sequence = "FTGAAAAAGACCAAAATTGTTTGCACCATCGGACCGAAAACCGAATCTGAAGAGATGTTAGCTAAAATGC"
         self.dna_fragment_name = "test_dna_fragment"

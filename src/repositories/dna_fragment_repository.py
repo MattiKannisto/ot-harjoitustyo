@@ -25,8 +25,20 @@ class DnaFragmentRepository:
             owner_name: name of the account that has added the DNA fragment as a string
         """
 
-        self._cursor.execute("insert into dna_fragment (name, for_strand, rev_strand, owner_name) values (?, ?, ?, ?)",
+        self._cursor.execute("insert into dna_fragment (name, for_strand, rev_strand, owner_name)"
+                             + "values (?, ?, ?, ?)",
                              (name, for_strand, rev_strand, owner_name))
+        self._connection_to_database.commit()
+
+    def delete_by_name(self, name):
+        """A method for deleting a new DnaFragment based on its name
+
+        Args:
+            name: Name of the DNA fragment as a string
+        """
+
+        self._cursor.execute(
+            "delete from dna_fragment where name = ?", (name,))
         self._connection_to_database.commit()
 
     def find_by_name_and_owner_name(self, name, owner_name):
@@ -34,7 +46,7 @@ class DnaFragmentRepository:
 
         Args:
             name: Name of the DNA fragment to be fetched as a string
-            owner_name: Name of the account that has added the DNA fragment to be fetched as a string
+            owner_name: Name of the account that has added the DNA fragment to database
 
         Returns:
             The DNA fragment as a tuple
@@ -47,10 +59,10 @@ class DnaFragmentRepository:
         return self._cursor.fetchone()
 
     def find_all_by_owner_name(self, owner_name):
-        """A method for getting all DnaFragments from the database based on the owner_name name
+        """A method for getting all DnaFragments from the database based on the owner name
 
         Args:
-            owner_name: name of the account that has added the DNA fragment to be fetched as a string
+            owner_name: name of the account that has added the DNA fragment to database
 
         Returns:
             A list of tuples

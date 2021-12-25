@@ -28,4 +28,8 @@
 |20.12.2021|8        |Ohje-toimintojen sisällyttäminen GUI:iin            |
 |21.12.2021|6        |GUI:n service-luokkien refaktorointia               |
 |22.12.2021|6        |Testien tekemistä ja bugien korjailua               |
-|Yhteensä  |90       |                                                    |
+|23.12.2021|8        |Koodin refaktorointia                               |
+|23.12.2021|2        |Käyttöohjeen ja vaatimusmäärittelyn päivittämistä   |
+|25.12.2021|3        |Käyttäjätietojen poiston tietokannoista tekeminen   |
+|25.12.2021|        |Arkkitehtuurikuvaus ja testausdokumentti            |
+|Yhteensä  |103      |                                                    |

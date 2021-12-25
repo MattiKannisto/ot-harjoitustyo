@@ -12,88 +12,88 @@ ULTRA_FAST_UPDATE_SPEED = 0.01
 
 
 class UserInterface():
+    """A class responsible for creating common elements of all views of the application and for switching between different views
+    """
+
     def __init__(self, root):
-        """[summary]
+        """Constructor for the class
 
         Args:
-            root ([type]): [description]
+            root: root window of the application
         """
-        self.root = root
+        self._root = root
         self._add_menus()
 
-        self.account_service = AccountService()
+        self._account_service = AccountService()
 
-        self.main_view = MainView(
-            self.root, self.account_service, self.options)
-        self.login_view = LoginView(self.root, self.account_service)
-        self.settings_view = SettingsView(self.root, self.account_service)
-        self.create_account_view = CreateAccountView(
-            self.root, self.account_service, self.options)
+        self._main_view = MainView(self._root, self._account_service, self.options)
+        self._login_view = LoginView(self._root, self._account_service)
+        self._settings_view = SettingsView(self._root, self._account_service)
+        self._create_account_view = CreateAccountView(self._root, self._account_service)
 
-        self.instructions_frame = Frame(self.root)
-        self.instructions_frame.grid(row=0, column=0, sticky=W+E)
-        self.instructions_label = Label(
-            self.instructions_frame, text="", fg="black")
-        self.instructions_label.grid(row=0, column=0, sticky=W)
-        self.login_timer_start = 0
-        self.instructions = None
-        self.active_view = None
-        self.notification_update_speed = ULTRA_FAST_UPDATE_SPEED
+        self._instructions_frame = Frame(self._root)
+        self._instructions_frame.grid(row=0, column=0, sticky=W+E)
+        self._instructions_label = Label(self._instructions_frame, text="", fg="black")
+        self._instructions_label.grid(row=0, column=0, sticky=W)
+        self._timer_start = 0
+        self._instructions = None
+        self._active_view = None
+        self._notification_update_speed = ULTRA_FAST_UPDATE_SPEED
 
-        self.root.after(0, self._manage_views)
-        self.root.after(0, self._wait_for_timer_and_return_instructions_text)
+        self._root.after(0, self._manage_views)
+        self._root.after(0, self._wait_for_timer_and_return_instructions_text)
 
     def _manage_views(self):
-        if not self.account_service.logged_in_user:
-            if self.account_service.creating_new_account:
-                self.main_view.inactive()
-                self.login_view.inactive()
-                self.settings_view.inactive()
-                self.create_account_view.active()
+        if not self._account_service.logged_in_user:
+            if self._account_service.creating_new_account:
+                self._main_view.inactive()
+                self._login_view.inactive()
+                self._settings_view.inactive()
+                self._create_account_view.active()
             else:
-                self.main_view.inactive()
-                self.login_view.active()
-                self.create_account_view.inactive()
-                self.settings_view.inactive()
+                self._main_view.inactive()
+                self._login_view.active()
+                self._create_account_view.inactive()
+                self._settings_view.inactive()
         else:
-            if self.account_service.changing_settings:
-                self.main_view.inactive()
-                self.login_view.inactive()
-                self.create_account_view.inactive()
-                self.settings_view.active()
+            if self._account_service.changing_settings:
+                self._main_view.inactive()
+                self._login_view.inactive()
+                self._create_account_view.inactive()
+                self._settings_view.active()
             else:
-                self.login_view.inactive()
-                self.create_account_view.inactive()
-                self.settings_view.inactive()
-                self.main_view.active()
-        self.root.after(1, self._manage_views)
+                self._login_view.inactive()
+                self._create_account_view.inactive()
+                self._settings_view.inactive()
+                self._main_view.active()
+        self._root.after(1, self._manage_views)
 
     def _get_active_view(self):
-        if self.main_view.input_frame:
-            return self.main_view
-        elif self.login_view.frame:
-            return self.login_view
-        if self.create_account_view.frame:
-            return self.create_account_view
+        if self._main_view.input_frame:
+            return self._main_view
+        elif self._login_view.frame:
+            return self._login_view
+        if self._create_account_view.frame:
+            return self._create_account_view
         else:
-            return self.settings_view
+            return self._settings_view
 
     def _get_instructions_set_default(self, view):
-        if not self.instructions or len(self.instructions) == 0:
-            self.instructions = view.instructions
-            view.instructions = [self.instructions[0]]
-            if len(self.instructions) > 1:
-                self.notification_update_speed = SLOW_UPDATE_SPEED
+        if not self._instructions or len(self._instructions) == 0:
+            self._instructions = view.instructions
+            view.instructions = [self._instructions[0]]
+            if len(self._instructions) > 1:
+                self._notification_update_speed = SLOW_UPDATE_SPEED
             else:
-                self.notification_update_speed = ULTRA_FAST_UPDATE_SPEED
+                self._notification_update_speed = ULTRA_FAST_UPDATE_SPEED
 
     def _add_menus(self):
-        self.menu = Menu(self.root)
-        self.root.config(menu=self.menu)
+        self.menu = Menu(self._root)
+        self._root.config(menu=self.menu)
         self.options = Menu(self.menu)
         self.menu.add_cascade(label="Options", menu=self.options)
         self.options.add_command(label="Help", command=self._help)
-        self.options.add_command(label="Exit", command=self.root.destroy)
+        self.options.add_command(label="Exit", command=self._root.destroy)
 
     def _generate_notifications_from_string(self, string, color, list):
         for i in range(len(string)+40):
@@ -114,26 +114,26 @@ class UserInterface():
     def _help(self):
         active_view = self._get_active_view()
         help_string = active_view.help_string
-        if active_view == self.main_view:
-            self.main_view.help()
+        if active_view == self._main_view:
+            self._main_view.help()
         help_notifications = self._generate_notifications_from_string(
             help_string, "red", [])
-        self.notification_update_speed = FAST_UPDATE_SPEED
-        self.instructions.extend(reversed(help_notifications))
+        self._notification_update_speed = FAST_UPDATE_SPEED
+        self._instructions.extend(reversed(help_notifications))
 
     def _wait_for_timer_and_return_instructions_text(self):
         active_view = self._get_active_view()
         self._get_instructions_set_default(active_view)
-        if self.instructions and ((time.time() - self.login_timer_start) > self.notification_update_speed):
-            if self.instructions_frame and len(self.instructions) > 0:
-                self.instructions = self.instructions[:-1]
-                self.login_timer_start = time.time()
-        if self.instructions and self.instructions_frame and self.instructions_label:
-            self.instructions_label.config(
-                text=self.instructions[-1][0], fg=self.instructions[-1][1])
-            if self.instructions[-1][0][0].isspace() and self.instructions[-1][0][1].isspace():
-                self.instructions_label.grid(sticky=E)
+        if self._instructions and ((time.time() - self._timer_start) > self._notification_update_speed):
+            if self._instructions_frame and len(self._instructions) > 0:
+                self._instructions = self._instructions[:-1]
+                self._timer_start = time.time()
+        if self._instructions and self._instructions_frame and self._instructions_label:
+            self._instructions_label.config(
+                text=self._instructions[-1][0], fg=self._instructions[-1][1])
+            if self._instructions[-1][0][0].isspace() and self._instructions[-1][0][1].isspace():
+                self._instructions_label.grid(sticky=E)
             else:
-                self.instructions_label.grid(
+                self._instructions_label.grid(
                     row=0, column=0, sticky=W)
-        self.root.after(1, self._wait_for_timer_and_return_instructions_text)
+        self._root.after(1, self._wait_for_timer_and_return_instructions_text)

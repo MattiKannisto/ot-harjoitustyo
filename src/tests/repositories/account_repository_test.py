@@ -55,7 +55,7 @@ class TestAccountRepository(unittest.TestCase):
         self.assertEqual(self.account_repository.find_by_name_and_password(
             self.name_1, self.password_1)[0], self.name_1)
 
-    def test_find_by_name_returns_none_tuple_with_correct_name_and_incorrect_password(self):
+    def test_find_by_name_returns_none_with_correct_name_and_incorrect_password(self):
         self.account_repository.create(self.name_1, self.password_1, self.directory_1,
                                        self.primer_length_1, self.primer_gc_content_1)
         self.assertEqual(self.account_repository.find_by_name_and_password(

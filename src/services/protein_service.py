@@ -25,14 +25,15 @@ class ProteinService:
         """A constructor for creating a new ProteinService object
         """
 
-        self._start_codon_encountered = False
-
-    def attempt_translation_and_return_notification(self, dna_fragment, directory):
+    def attempt_translation_and_return_notification(self, name, for_strand, directory):
         """A method for attempting to translate the DNA fragment into a protein and returning
-           a notification on the failure or successfulness of this action
+           a notification on the failure or successfulness of this action. The protein coding
+           sequence is assumed to be in the forward strand of the DNA fragment as it is common
+           practice in molecular biology
 
         Args:
-            dna_fragment: The DNA fragment as a DnaFragment object
+            name: Name of the DNA fragment as string
+            for_strand: Forward strand of the DNA fragment as string
             directory: Directory into which the output file containing the translation is saved
 
         Returns:
@@ -42,33 +43,37 @@ class ProteinService:
             return ["Please set a working directory in the settings first!", "red"]
         if not os.access(directory, os.W_OK):
             return ["You do not have the right to write to a file in this directory!", "red"]
-        if not dna_fragment.for_strand:
+        if not for_strand:
             return ["Forward strand of the DNA fragment has not been defined!", "red"]
-        translation = self._translate(dna_fragment.for_strand)
+        translation = self._translate(for_strand)
         if not translation:
             return ["Could not be translated, no start codon found!", "yellow"]
-        self._write_translation_to_file(directory + "/translations", translation)
-        return ["Translation of the DNA fragment '" + dna_fragment.name
+        self._write_to_file(directory + "/translations", name, translation)
+        return ["Translation of the DNA fragment '" + name
                 + "' added to folder " + directory + "/translations", "green"]
 
-    def _translate(self, sequence):
+    def _translate(self, sequence, start_codon_encountered=False):
         if len(sequence) < CODON_LENGTH or self._is_stop_codon(sequence[:CODON_LENGTH]):
-            self._start_codon_encountered = False
             return ""
-        if self._start_codon_encountered:
-            return CODON_CHART[sequence[:CODON_LENGTH]] + self._translate(sequence[CODON_LENGTH:])
+        if start_codon_encountered:
+            return CODON_CHART[sequence[:CODON_LENGTH]] + self._translate(sequence[CODON_LENGTH:],
+                                                                          start_codon_encountered)
         if self._is_start_codon(sequence[:CODON_LENGTH]):
-            self._start_codon_encountered = True
-            return self._translate(sequence)
-        return self._translate(sequence[CODON_LENGTH:])
+            start_codon_encountered = True
+            return self._translate(sequence, start_codon_encountered)
+        return self._translate(sequence[CODON_LENGTH:],  start_codon_encountered)
 
-    def _write_translation_to_file(self, directory_name, translation):
-        if not os.path.isdir(directory_name):
-            Path(os.path.join(directory_name)).mkdir()
-        Path(os.path.join(directory_name, "translation.csv")).touch()
-        with open(os.path.join(directory_name, "translation.csv"), 'w') as csvfile:
-            csvfile.seek(0)
-            csv.writer(csvfile, delimiter=',').writerow([translation])
+    def _write_to_file(self, directory, name, translation):
+        self._create_directory_if_not_existing(directory)
+        file_name = name + "_translation.csv"
+        Path(os.path.join(directory, file_name)).touch()
+        with open(os.path.join(directory, file_name), 'w', encoding='utf-8') as file:
+            file.seek(0)
+            csv.writer(file, delimiter=',').writerow([translation])
+
+    def _create_directory_if_not_existing(self, directory):
+        if not os.path.isdir(directory):
+            Path(os.path.join(directory)).mkdir()
 
     def _is_start_codon(self, codon):
         return codon == START_CODON
