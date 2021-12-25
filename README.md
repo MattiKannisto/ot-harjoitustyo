@@ -6,6 +6,8 @@ DnaSequencingToolPython-sovellus mahdollistaa automatisoidun sekvensointialukkei
 
 [Viikon 6 release](https://github.com/MattiKannisto/ot-harjoitustyo/releases/tag/viikko6)
 
+[Loppupalautus](https://github.com/MattiKannisto/ot-harjoitustyo/releases/tag/loppupalautus)
+
 ## Dokumentaatio
 [Tuntikirjanpito](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
