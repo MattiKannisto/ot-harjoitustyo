@@ -30,6 +30,8 @@
 |22.12.2021|6        |Testien tekemistä ja bugien korjailua               |
 |23.12.2021|8        |Koodin refaktorointia                               |
 |23.12.2021|2        |Käyttöohjeen ja vaatimusmäärittelyn päivittämistä   |
-|25.12.2021|3        |Käyttäjätietojen poiston tietokannoista tekeminen   |
-|25.12.2021|        |Arkkitehtuurikuvaus ja testausdokumentti            |
-|Yhteensä  |103      |                                                    |
+|25.12.2021|1        |Käyttäjätietojen poiston tietokannoista tekeminen   |
+|25.12.2021|2        |Järjestelmätestausta ja koodin korjailua            |
+|25.12.2021|2        |Koodin refaktorointia ja docsting-kommentointia     |
+|25.12.2021|4        |Arkkitehtuurikuvaus ja testausdokumentti            |
+|Yhteensä  |109      |                                                    |
