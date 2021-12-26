@@ -11,7 +11,7 @@ class DnaFragmentService:
 
     def __init__(self, repository=dna_fragment_repository):
         """A constructor for making a new DnaFragment object
-        
+
         Args:
             repository: A repository object
         """
