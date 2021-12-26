@@ -58,11 +58,25 @@ class DnaFragmentRepository:
         )
         return self._cursor.fetchone()
 
+    def find_by_name(self, name):
+        """A method for getting a DnaFragment from the database based on name
+
+        Args:
+            name: Name of the DNA fragment
+
+        Returns:
+            A tuple containing DNA fragment information
+        """
+
+        self._cursor.execute(
+            "select * from dna_fragment where name = ?", (name,))
+        return self._cursor.fetchone()
+
     def find_all_by_owner_name(self, owner_name):
         """A method for getting all DnaFragments from the database based on the owner name
 
         Args:
-            owner_name: name of the account that has added the DNA fragment to database
+            owner_name: Name of the account that has added the DNA fragment to database
 
         Returns:
             A list of tuples

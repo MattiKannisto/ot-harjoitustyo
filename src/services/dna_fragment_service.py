@@ -64,6 +64,8 @@ class DnaFragmentService:
 
         if self._dna_fragment_repository.find_by_name_and_owner_name(name, owner_name) is not None:
             return ["You already have a DNA fragment with this name!", "red"]
+        if self._dna_fragment_repository.find_by_name(name) is not None:
+            return ["A fragment with this name already exists, please try another name!", "red"]
         if self._incorrect_letters_found(sequence):
             return ["Invalid DNA sequence! The sequence should contain only letters "
                     + "'A', 'T', 'G' and 'C'", "red"]

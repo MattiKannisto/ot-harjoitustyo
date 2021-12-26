@@ -16,6 +16,12 @@ class MockUpDnaFragmentRepository:
                 return dna_fragment
         return None
 
+    def find_by_name(self, name):
+        for dna_fragment in self.dna_fragments:
+            if dna_fragment[0] == name:
+                return dna_fragment
+        return None
+
     def find_all_by_owner_name(self, owner_name):
         found_dna_fragments = []
         for dna_fragment in self.dna_fragments:
