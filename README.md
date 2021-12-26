@@ -28,7 +28,7 @@ Jos sovellusta käytetään virtuaalityöasemalla ja saadaan virheilmoitus 'data
 
 **Testien suorittaminen:** poetry run invoke test
 
-Ohjelman manuaalista testaamista varten suositellaan käytettäväksi jonkin jo sekvensoidun organismin DNA-sekvenssiä, esimerkiksi testausdokumentissa mainittua Escherichia coli -bakteerin pyruvaattikinaasi-entsyymin geeniä.
+Ohjelman manuaalista testaamista varten suositellaan käytettäväksi jonkin jo sekvensoidun organismin DNA-sekvenssiä, esimerkiksi testausdokumentissa mainittua Escherichia coli -bakteerin pyruvaattikinaasi-entsyymin geeniä, tai jotakin toista [GenBank:sta](https://www.ncbi.nlm.nih.gov/genbank/) löytyvää sekvenssiä.
 
 **Testikattavuusraportin generoiminen:** poetry run invoke coverage-report
 
