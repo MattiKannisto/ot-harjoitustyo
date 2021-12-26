@@ -34,4 +34,5 @@
 |25.12.2021|2        |Järjestelmätestausta ja koodin korjailua            |
 |25.12.2021|2        |Koodin refaktorointia ja docsting-kommentointia     |
 |25.12.2021|4        |Arkkitehtuurikuvaus ja testausdokumentti            |
-|Yhteensä  |109      |                                                    |
+|26.12.2021|6        |Lopullisen version testaaminen, dokumentointia      |
+|Yhteensä  |115      |                                                    |
