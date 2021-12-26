@@ -25,7 +25,7 @@ Logic of the application is contained mostly in service classes of the applicati
 
 The application has three entities, Account, DnaFragment and Primer:
 
-![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/add_dna_fragment_sequence_chart.png)
+![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/entities.png)
 
 Each created account can have multiple DnaFragments and each DnaFragment can have multiple primers designed for it. The SQLite database does not store dependencies between these data using jointables but the DNA fragment table instead has a column for owner name, which links each row to a particular account (owner name of DNA fragment is the name of the account that has added it to the database). The primers are linked similarly to the DNA fragments which act as their template DNAs.
 
