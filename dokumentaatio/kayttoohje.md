@@ -1,6 +1,6 @@
 # Instructions for use
 ### Before starting the application
-In order to use the application, one needs to download the source code of the application from the most up to date release from [the GitHub repository of the project](https://github.com/MattiKannisto/ot-harjoitustyo). The application uses a SQLite database which needs to be initialized prior to first use of the application. This can be done in command line by changing to the root folder of the project and executing command **poetry run invoke initialize**.
+In order to use the application, one needs to download the source code of the application from [the most up to date release](https://github.com/MattiKannisto/ot-harjoitustyo/releases/tag/loppupalautus). Before starting to use the application, one needs to install its dependencies in the command line by changing to the root folder of the project and executing the command **poetry install**. The application uses a SQLite database which needs to be initialized prior to first use of the application. This can be done in command line by changing to the root folder of the project and executing command **poetry run invoke initialize**.
 
 ### Starting the application
 The application can be started from the root folder of the project with command **poetry run invoke start**. This will open the login view:
