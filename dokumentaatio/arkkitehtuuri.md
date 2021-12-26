@@ -3,7 +3,7 @@
 
 The program has following structure depicted as a package diagram:
 
-![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/package_diagram)
+![image](https://github.com/MattiKannisto/ot-harjoitustyo/raw/master/dokumentaatio/kuvat/package_diagram.png)
 
 User interface (UI) of the application is stored in the package 'ui'. UI uses services that are stored in 'services' package. Services use entities and repositories used to store the information of the entities which are stored in packages 'entities' and 'repositories', respectively.
 
