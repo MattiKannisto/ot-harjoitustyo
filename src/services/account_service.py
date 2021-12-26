@@ -8,7 +8,7 @@ class AccountService:
 
     def __init__(self, repository=account_repository):
         """A constructor for making a new AccountService object
-        
+
         Args:
             repository: A repository object
         """
@@ -27,7 +27,7 @@ class AccountService:
             name: Name of the account to be fetched as a string
             password: Password of the account to be fetched as a string
         """
-        
+
         account_as_tuple = self._account_repository.find_by_name_and_password(name, password)
         self.logged_in_user = self._tuple_into_object(account_as_tuple)
 
