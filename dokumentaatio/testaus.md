@@ -18,7 +18,7 @@ The service classes were tested with mock repositories instead of the used SQLit
 
 ### Test coverage
 
-The current test classes reach only 72 % coverage:
+The current test classes reach only 71 % coverage:
 
 ![image](https://github.com/MattiKannisto/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/coverage_report)
 
