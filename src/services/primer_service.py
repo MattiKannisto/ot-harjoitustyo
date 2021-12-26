@@ -13,7 +13,7 @@ class PrimerService:
 
     def __init__(self, repository=primer_repository):
         """A constructor for making a new PrimerService object
-        
+
         Args:
             repository: A repository object
         """
@@ -65,7 +65,7 @@ class PrimerService:
             dna_fragment_name: Name of the template DNA fragment as string
             for_strand: Forward strand of the template DNA as string
             rev_strand: Reverse strand of the template DNA as string
-            
+
         Returns:
             An array of two strings containing a notification text and a color of
             the notification if the DNA fragment's forward strand is not None
